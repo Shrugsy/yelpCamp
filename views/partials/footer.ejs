@@ -1,0 +1,23 @@
+
+</div>
+
+<script>
+    $(document).ready(function() {
+        // get current URL path and assign 'active' class
+        let pathname = window.location.pathname;
+        //if sub url, then just use the main part of the url
+        let splitPath = pathname.split("/")
+        if (splitPath.length > 2){
+            pathname = `/${splitPath[1]}`
+        }
+        let aTag = $('.navbar-nav > li > a[href="'+pathname+'"]')
+        aTag.parent().addClass('active');
+        aTag.html(aTag.html()+'<span class="sr-only">(current)</span>')
+    })
+
+
+
+</script>
+
+</body>
+</html>

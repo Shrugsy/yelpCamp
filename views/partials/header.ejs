@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script
+    src="http://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="/public/stylesheets/styles.css">
+    <script defer src="/public/script.js"></script>
+    <title>Yelp Camp</title>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-sm navbar-light bg-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">YelpCamp</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="/campgrounds" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Campgrounds
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/campgrounds">All Campgrounds</a>
+                    <a class="dropdown-item" href="/campgrounds/new">Add a new Campground</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+                </li>
+            </ul>
+            <ul class="navbar-nav mr-0">
+                <% if (!currentUser){ %>
+                    <li class="nav-item"><a class="nav-link" href="/login">Log in</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
+                <% } else { %>
+                    <li class="nav-item"><a class="nav-link" href="#">Logged in as: <%= currentUser.username %></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/logout">Log out</a></li>
+                <% } %>
+                
+                
+            </ul>
+
+            </div>
+        </div>
+
+      </nav>
+
+
+    <div class="container mt-4">

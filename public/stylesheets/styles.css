@@ -1,0 +1,41 @@
+/* .thumbnail-md {
+    width: 450px;
+    height: 300px;
+    /* max-width: 450px; */
+/* } */
+
+body {
+    padding-bottom: 3em;
+}
+
+.navbar {
+    padding: 0 1rem;
+}
+
+.active {
+    background-color: rgb(224, 224, 224);
+}
+
+.form {
+    width: 50%;
+    margin: 25px auto;
+}
+
+.img-thumbnail {
+    padding: 0;
+}
+
+.img-thumbnail img {
+    width: 100%;
+}
+
+.comment {
+    width: 100%;
+}
+
+.btn-group-xs > .btn, .btn-xs {
+    padding: .25rem .4rem;
+    font-size: .875rem;
+    line-height: .5;
+    border-radius: .2rem;
+  }
