@@ -1,7 +1,9 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = process.env.port;
 const mongoose = require('mongoose');
+const flash = require('connect-flash');
 const Campground = require('./models/campground.js');
 const Comment = require('./models/comment.js');
 const seedDB = require('./seeds.js');
@@ -10,6 +12,8 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user.js');
 const methodOverride = require('method-override');
+
+
 
 const campgroundRoutes = require('./routes/campgrounds.js');
 const commentRoutes = require('./routes/comments.js');
@@ -23,7 +27,7 @@ app.use(require('express-session')({
     resave: false,
     saveUninitialized: false
 }))
-
+app.use(flash());
 app.use(methodOverride("_method"));
 
 app.use(passport.initialize());
@@ -32,6 +36,9 @@ app.use(passport.session());
 // this is called on every route!
 app.use(function(req, res, next){
     res.locals.currentUser = req.user;
+    res.locals.messageSuccess = req.flash('success')
+    res.locals.messageError = req.flash('error')
+    res.locals.moment = require('moment');
     // console.log(`req.user: ${req.user}`)
     // console.log(`current user from middleware: ${res.locals.currentUser}`)
     next();
@@ -73,7 +80,7 @@ app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);
 
 app.get('*', (req, res)=>{
-    console.log('hello')
+    // console.log('hello')
     // res.render('landing')
     res.redirect('/')
 })

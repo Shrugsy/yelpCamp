@@ -3,10 +3,10 @@
 <div>
     <!-- <h1 class="text-center">Add a comment to <%= campground.name %></h1> -->
 
-    <div class="form comment">
+    <div class="form comment-form mt-0">
         <form action="/campgrounds/<%= campground._id %>/comments" method="post">
             <div class="form-group">
-                <textarea class="form-control" name="comment[text]" cols="30" rows="5" placeholder="Text" required></textarea>
+                <textarea class="form-control" name="comment[text]" cols="30" rows="5" placeholder="Type your comment here" required></textarea>
             </div>
             <div class="form-group">
                 <button class="btn btn-sm btn-primary btn-block">Add comment</button>

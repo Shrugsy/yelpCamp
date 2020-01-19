@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="/public/stylesheets/styles.css">
+    <script src="https://kit.fontawesome.com/dd140297f8.js" crossorigin="anonymous"></script>
     <script defer src="/public/script.js"></script>
     <title>Yelp Camp</title>
 </head>
@@ -45,7 +46,12 @@
                     <li class="nav-item"><a class="nav-link" href="/login">Log in</a></li>
                     <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
                 <% } else { %>
-                    <li class="nav-item"><a class="nav-link" href="#">Logged in as: <%= currentUser.username %></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">
+                        Logged in as: <%= currentUser.username %>
+                        <% if(currentUser.isAdmin){ %>
+                            <%='(Administrator)'%>
+                        <% } %>
+                    </a></li>
                     <li class="nav-item"><a class="nav-link" href="/logout">Log out</a></li>
                 <% } %>
                 
@@ -57,5 +63,13 @@
 
       </nav>
 
+      
+
 
     <div class="container mt-4">
+        <% if(messageSuccess && messageSuccess.length > 0){ %>
+            <div class="alert alert-success"><%=messageSuccess%></div>
+        <% } %>
+        <% if(messageError && messageError.length > 0){ %>
+            <div class="alert alert-danger"><%=messageError%></div>
+        <% } %>
