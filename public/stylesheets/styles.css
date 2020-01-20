@@ -21,24 +21,15 @@ body {
     margin: 25px auto;
 }
 
-.img-thumbnail {
-    padding: 0;
-    /* opacity: 0; */
-    /* text-align: center; */
+
+
+
+div.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 24px;
 }
 
-.img-thumbnail img.showpage {
-    width: 100%;
 
-}
-
-.img-preview {
-    /* max-width: 30%; */
-    max-height: 240px;
-    object-fit: contain;
-    background-color: transparent;
-    border: none;
-}
 
 .avatar-profile {
     width: 240px;
@@ -92,3 +83,84 @@ div.form-group.row i{
     margin-left: 0;
     margin-right: 0;
 }
+
+.img-preview {
+    /* max-width: 30%; */
+    max-height: 240px;
+    object-fit: contain;
+    background-color: transparent;
+    border: none;
+}
+
+.img-thumbnail {
+    padding: 0;
+    /* opacity: 0; */
+    /* text-align: center; */
+}
+
+img.showpage {
+    width: 100%;
+    /* height: 508px;
+    object-fit: cover; */
+}
+
+.img-index {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.jumbotron {
+    text-align: center;
+}
+
+.jumbotron h1{
+    font-size: 3em;
+}
+
+/* // Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+    .jumbotron h1{
+        font-size: 3em;
+    }
+    .img-index{
+        height: 150px;
+    }
+
+ }
+
+ /* show icon inline from here */
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .jumbotron {
+        text-align: left;
+    }
+    .jumbotron h1{
+        font-size: 4em;
+    }
+    .img-index{
+        height: 107px;
+    }
+
+ }
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+
+    .img-index{
+        height: 150px;
+    }
+    /* img.showpage {
+        height: 688px;
+    } */
+ }
+
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .jumbotron h1{
+        font-size: 5em;
+    }
+    .img-index{
+        height: 183px;
+    }
+ }

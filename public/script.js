@@ -18,3 +18,8 @@ function checkPasswordsMatch() {
         return true;
     }
 }
+
+// activate tooltips
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })

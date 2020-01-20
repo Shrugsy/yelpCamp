@@ -53,6 +53,7 @@ let uri = 'mongodb://localhost:27017/yelpcamp'
 let options = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useCreateIndex: true,
     serverSelectionTimeoutMS: 5000
 }
 mongoose.connect(uri, options).then(

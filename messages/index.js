@@ -5,6 +5,7 @@ let msg = {
     logInSuccess: (usr)=> `You have successfully signed in as ${usr}!`,
     signOutSuccess: 'You have successfully been signed out.',
     alreadySignedOut: 'You are already signed out.',
+    noUserID: 'No user ID provided or user does not exist.',
     editProfileSuccess: 'Details successfully updated.',
     passwordsDoNotMatch: 'New password does not match. Other details have been saved',
     requiredFieldMissing: 'A required field is missing',

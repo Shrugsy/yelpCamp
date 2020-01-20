@@ -3,7 +3,7 @@
 <div class="row">
     <div class="col-md-3">
         <p>
-            <a class="btn btn-danger" href="/campgrounds">< Back to all Campgrounds</a>
+            <a class="btn btn-secondary" href="/campgrounds">< Back to all Campgrounds</a>
         </p>
         <p class="lead">YelpCamp</p>
 
@@ -15,8 +15,8 @@
 
     </div>
     <div class="col-md-9">
-        <div class="img-thumbnail">
-            <img class="img-fluid showpage" src="<%= campground.image %>" alt="">
+        <div class="card">
+            <img class="showpage" src="<%= campground.image %>" alt="">
             <div class="p-2">
                 <h4 class="float-right">$<%=campground.price%>/night</h4>
                 <h4><a href=""><%= campground.name %></a></h4>

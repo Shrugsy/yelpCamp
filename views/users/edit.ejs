@@ -11,7 +11,7 @@
             <i class="fas fa-unlock-alt my-auto h-100 col-1"></i><input id="p1" class="form-control col-11" type="password" name="newPassword0" placeholder="new password">
         </div>
         <div class="form-group row">
-            <i id="passwordTooltip" class="fas fa-unlock-alt my-auto h-100 col-1" data-toggle="tooltip" data-placement="left" title="Passwords do not match"></i><input id="p2" class="form-control col-11" type="password" name="newPassword1" placeholder="confirm new password">
+            <span id="passwordTooltip" data-toggle="tooltip" data-placement="left" title="Passwords do not match"></span id="passwordTooltip"><i class="fas fa-unlock-alt my-auto h-100 col-1"></i><input id="p2" class="form-control col-11" type="password" name="newPassword1" placeholder="confirm new password">
         </div>
         <div class="form-group row">
             <i class="fas fa-id-card my-auto h-100 col-1"></i><input class="form-control col-11" type="text" name="user[firstName]" placeholder="first name (required)" value="<%=user.firstName%>" required>

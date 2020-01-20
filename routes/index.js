@@ -28,8 +28,6 @@ router.post('/register', (req, res)=>{
     if (req.body.avatar !== ''){
         newUser.avatar = req.body.avatar;
     }
-    console.log(req.body.user);
-    // eval(require('locus'))
     if (req.body.adminCode === process.env.correctAdminCode){
         newUser.isAdmin = true;
     }
@@ -95,11 +93,15 @@ router.post('/login', (req, res, next)=>{
 // log out
 router.get('/logout', middleware.isLoggedInLoggingOut, (req, res)=>{
     req.logout();
-    console.log('user logged out')
     req.flash('success', msgs.signOutSuccess);
-    // res.redirect('back')
     res.redirect('/campgrounds')
 });
+
+// USER PROFILE WITH NO ID PROVIDED
+router.get('/users/', (req, res)=>{
+    req.flash('error', msgs.noUserID);
+    res.redirect('back');
+})
 
 // USER PROFILE
 router.get('/users/:userId', (req, res)=>{
@@ -109,22 +111,26 @@ router.get('/users/:userId', (req, res)=>{
             req.flash('error', err.message);
             res.redirect('back')
         } else {
-            Campground.find().where('author.id').equals(foundUser._id).exec((err, campgrounds)=>{
-                if(err){
-                    console.log(err);
-                    req.flash('error', err.message);
-                    res.redirect('back')
-                } else {
-                    res.render('users/show', {user: foundUser, campgrounds: campgrounds});
-                }
-            })
+            if (foundUser){
+                Campground.find().where('author.id').equals(foundUser._id).exec((err, campgrounds)=>{
+                    if(err){
+                        console.log(err);
+                        req.flash('error', err.message);
+                        res.redirect('back')
+                    } else {
+                        res.render('users/show', {user: foundUser, campgrounds: campgrounds});
+                    }
+                })
+            } else {
+                req.flash('error', msgs.noUserID);
+                res.redirect('back');
+            }
         }
     })
 });
 
 // USER PROFILE EDIT
 router.get('/users/:userId/edit', middleware.checkProfileOwnership, (req, res)=>{
-    // console.log('trying')
     User.findById(req.params.userId, (err, foundUser)=>{
         if(err){
             req.flash('error', err.message);
@@ -133,8 +139,6 @@ router.get('/users/:userId/edit', middleware.checkProfileOwnership, (req, res)=>
             res.render('users/edit', {user: foundUser})
         }
     })
-    
-    // res.send('trying to edit user id' + req.params.userId)
 })
 
 // USER PROFILE UPDATE
@@ -181,8 +185,6 @@ router.put('/users/:userId', middleware.checkProfileOwnership, (req, res)=>{
             })
         }
     })       
-
-
 })
 
 module.exports = router;
