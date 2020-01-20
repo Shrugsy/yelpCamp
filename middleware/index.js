@@ -1,10 +1,19 @@
 // All of the middleware goes here
 const Campground = require('../models/campground.js');
 const Comment = require('../models/comment.js');
+const User = require('../models/user.js');
 
 const msgs = require('../messages');
 
 let middlewareObj = {};
+
+middlewareObj.isLoggedInLoggingOut = function(req, res, next){
+    if(req.isAuthenticated()){
+        return next();
+    }
+    req.flash('error', msgs.alreadySignedOut);
+    res.redirect('back');
+}
 
 middlewareObj.isLoggedIn = function(req, res, next){
     if(req.isAuthenticated()){
@@ -14,13 +23,35 @@ middlewareObj.isLoggedIn = function(req, res, next){
     res.redirect('/login');
 }
 
+middlewareObj.checkProfileOwnership = function(req, res, next){
+    if(req.isAuthenticated()){
+        User.findById(req.params.userId, (err, foundUser)=>{
+            if(err){
+                req.flash('error', err.message);
+                res.redirect('back');
+            } else {
+                if (req.user && req.user._id.equals(req.params.userId)) {
+                    return next()
+                } else {
+                    req.flash('error', msgs.badPermission);
+                    res.redirect('back');
+                }
+            }
+        })
+    } else {
+        req.flash('error', msgs.badPermission);
+        res.redirect('/login');
+    }
+
+}
+
 middlewareObj.checkCampgroundOwnership = function(req, res, next){
     if(req.isAuthenticated()){
         Campground.findById(req.params.id, (err, foundCampground)=>{
             if(err){
                 console.log(err);
                 // res.render('error', {error: err});
-                req.flash('error', err)
+                req.flash('error', err.message)
                 res.redirect('back');
             } else {
                 if (!foundCampground){

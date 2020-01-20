@@ -8,6 +8,8 @@ const msgs = require('../messages');
 //INDEX
 router.get('/', (req, res)=>{
     // get all campgrounds from database
+    console.log(req.user);
+    console.log(req.Campground);
     Campground.find({}, (err, allCampgrounds)=>{
         if(err){
             console.log(err);

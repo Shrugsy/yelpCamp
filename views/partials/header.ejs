@@ -46,7 +46,7 @@
                     <li class="nav-item"><a class="nav-link" href="/login">Log in</a></li>
                     <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
                 <% } else { %>
-                    <li class="nav-item"><a class="nav-link" href="#">
+                    <li class="nav-item"><a class="nav-link" href="/users/<%=currentUser._id%>">
                         Logged in as: <%= currentUser.username %>
                         <% if(currentUser.isAdmin){ %>
                             <%='(Administrator)'%>
@@ -72,4 +72,7 @@
         <% } %>
         <% if(messageError && messageError.length > 0){ %>
             <div class="alert alert-danger"><%=messageError%></div>
+        <% } %>
+        <% if(messageWarning && messageWarning.length > 0){ %>
+            <div class="alert alert-warning"><%=messageWarning%></div>
         <% } %>

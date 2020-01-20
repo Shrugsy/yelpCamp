@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
-const port = process.env.port;
+const port = process.env.port || 3000;
 const mongoose = require('mongoose');
 const flash = require('connect-flash');
 const Campground = require('./models/campground.js');
@@ -36,8 +36,9 @@ app.use(passport.session());
 // this is called on every route!
 app.use(function(req, res, next){
     res.locals.currentUser = req.user;
-    res.locals.messageSuccess = req.flash('success')
-    res.locals.messageError = req.flash('error')
+    res.locals.messageSuccess = req.flash('success');
+    res.locals.messageError = req.flash('error');
+    res.locals.messageWarning = req.flash('warning');
     res.locals.moment = require('moment');
     // console.log(`req.user: ${req.user}`)
     // console.log(`current user from middleware: ${res.locals.currentUser}`)

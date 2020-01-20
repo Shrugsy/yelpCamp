@@ -4,14 +4,26 @@
 
 <div class="form">
     <form action="/register" method="POST">
-        <div class="form-group">
-            <input class="form-control" type="text" name="username" placeholder="username" required>
+        <div class="form-group row">
+            <i class="fas fa-user my-auto h-100 col-1"></i><input class="form-control col-11" type="text" name="username" placeholder="username (required)" required>
         </div>
-        <div class="form-group">
-            <input class="form-control" type="password" name="password" placeholder="password" required>
+        <div class="form-group row">
+            <i class="fas fa-unlock-alt my-auto h-100 col-1"></i><input class="form-control col-11" type="password" name="password" placeholder="password (required)" required>
         </div>
-        <div class="form-group">
-            <input class="form-control" type="password" name="adminCode" placeholder="admin code (ignore this field if you are not an administrator)">
+        <div class="form-group row">
+            <i class="fas fa-id-card my-auto h-100 col-1"></i><input class="form-control col-11" type="text" name="user[firstName]" placeholder="first name (required)" required>
+        </div>
+        <div class="form-group row">
+            <i class="fas fa-address-card my-auto h-100 col-1"></i><input class="form-control col-11" type="text" name="user[lastName]" placeholder="last name (required)" required>
+        </div>
+        <div class="form-group row">
+            <i class="fas fa-envelope my-auto h-100 col-1"></i><input class="form-control col-11" type="email" name="user[email]" placeholder="email address (required)" required>
+        </div>
+        <div class="form-group row">
+            <i class="fas fa-portrait my-auto h-100 col-1"></i><input class="form-control col-11" type="text" name="avatar" placeholder="avatar url">
+        </div>
+        <div class="form-group row">
+            <i class="fas fa-user-shield my-auto h-100 col-1" my-auto h-100 col-1></i><input class="form-control col-11" type="password" name="adminCode" placeholder="admin code (ignore this field if you are not an administrator)">
         </div>
         <div class="form-group">
             <button class="btn btn-lg btn-primary btn-block" >Submit</button>

@@ -1,0 +1,48 @@
+<%- include('../partials/header') %>
+
+<h1>User Profile for <%=user.username%> (<%=user.firstName + ' ' + user.lastName%>)</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="img-thumbnail text-center">
+            <img class="img-fluid avatar-profile" src="<%=user.avatar%>" alt="user profile image">
+        
+            <div class="caption"><a href="mailto:<%=user.email%>"><%=user.email%></a></div>
+        </div>
+        <div>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, minus ut recusandae dolorum tempore expedita sunt quis totam deleniti illum nihil nam laborum accusantium eaque esse explicabo officiis. Omnis, ducimus.
+        </div>
+        <!-- check if currentUser.id matches profile id (user.id), then show this -->
+        <% if (currentUser && currentUser.id === user.id){ %>
+            <a href="/users/<%=user.id%>/edit">>>Edit profile</a>
+        <% } %>
+        
+        
+    </div>
+    <div class="col-md-8">
+        <div class="h3">Submitted Campgrounds</div>
+        <ul class="list-group">
+            <% campgrounds.forEach((campground)=>{ %>
+                <li class="list-group-item alternate-colours">
+                    <a href="/campgrounds/<%= campground.id %>">
+                    <div class="row align-items-center">
+                        <div class="col-md-5 d-flex justify-content-center">
+                            <p class='h4 text-center' >
+                                <%= campground.name %>
+                            </p>
+                        </div>
+                        <div class="col-md-7">
+                            <img class="img-thumbnail img-preview w-100" src="<%= campground.image %>" alt="">
+                        </div>
+                    </div>
+                </a>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
+
+</div>
+
+<%- include('../partials/footer') %>
+
+

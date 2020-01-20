@@ -1,0 +1,41 @@
+<%- include('../partials/header') %>
+
+<h1 class="text-center">Edit Profile</h1>
+
+<div class="form">
+    <form action="/users/<%=user.id%>?_method=PUT" method="POST" onsubmit="return checkPasswordsMatch()">
+        <div class="form-group row">
+            <i class="fas fa-user my-auto h-100 col-1"></i><input class="form-control col-11" type="text" name="username" placeholder="username (required)" value="<%=user.username%>" required>
+        </div>
+        <div class="form-group row">
+            <i class="fas fa-unlock-alt my-auto h-100 col-1"></i><input id="p1" class="form-control col-11" type="password" name="newPassword0" placeholder="new password">
+        </div>
+        <div class="form-group row">
+            <i id="passwordTooltip" class="fas fa-unlock-alt my-auto h-100 col-1" data-toggle="tooltip" data-placement="left" title="Passwords do not match"></i><input id="p2" class="form-control col-11" type="password" name="newPassword1" placeholder="confirm new password">
+        </div>
+        <div class="form-group row">
+            <i class="fas fa-id-card my-auto h-100 col-1"></i><input class="form-control col-11" type="text" name="user[firstName]" placeholder="first name (required)" value="<%=user.firstName%>" required>
+        </div>
+        <div class="form-group row">
+            <i class="fas fa-address-card my-auto h-100 col-1"></i><input class="form-control col-11" type="text" name="user[lastName]" placeholder="last name (required)" value="<%=user.lastName%>" required>
+        </div>
+        <div class="form-group row">
+            <i class="fas fa-envelope my-auto h-100 col-1"></i><input class="form-control col-11" type="email" name="user[email]" placeholder="email address (required)" value="<%= user.email%>" required>
+        </div>
+        <div class="form-group row">
+            <i class="fas fa-portrait my-auto h-100 col-1"></i><input class="form-control col-11" type="text" name="avatar" placeholder="avatar url" value="<%= user.avatar %>">
+        </div>
+        <div class="form-group">
+            <button class="btn btn-lg btn-primary btn-block" >Submit</button>
+        </div>
+    </form>
+    <a class="btn btn-danger" href="/campgrounds">< Back to all Campgrounds</a></Back>
+    
+</div>
+
+<script>
+
+</script>
+
+
+<%- include('../partials/footer') %>
